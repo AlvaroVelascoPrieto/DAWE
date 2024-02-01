@@ -1,67 +1,173 @@
-/*PARTE 1*/
-
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    /* imagen sacada de https://www.magicpattern.design/tools/css-backgrounds*/
+    background-image: url(images/css-pattern-by-magicpattern.png);
+    background-size: 400px;
+    background-repeat: repeat;
+    overflow-x: hidden;
 }
 
-.encabezado {
-    background: linear-gradient(to bottom, #db3434, #29b963); /* Puedes ajustar los colores del gradiente según tus preferencias */
+
+/* header */
+header {
+    background: linear-gradient(to top, #000000, #7e7d7d);
     padding: 20px;
     text-align: center;
 }
 
-.nombre-pagina {
-    color: #fff; /* Color del texto */
-    font-size: 36px;
-    margin: 0;
-    transition: text-shadow 0.3s ease; /* Añadir transición para el efecto hover */
+.page-title {
+    color: white;
+    font-size: 2em;
+    text-transform: uppercase;
+    transition: text-shadow 0.3s ease;
 }
 
-.nombre-pagina:hover {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Ajustar los valores según tu preferencia para la sombra */
+.page-title:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/*PARTE 2*/
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.menu {
-    background: #29b963; /* Color de fondo del menú */
-    padding: 10px 0;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+/* nav bar */
+.nav-menu {
+    list-style-type: none;
     display: flex;
+    justify-content: space-around;
+    padding: 0;
 }
 
-li {
-    margin-right: 20px;
-}
-
-a {
+.nav-item a {
     text-decoration: none;
-    color: #fff; /* Color del texto en el menú */
-    font-weight: bold;
-    padding: 5px 10px;
+    color: white;
+    padding: 10px 20px;
     border-radius: 5px;
-    transition: background 0.3s ease; /* Añadir transición para el efecto hover */
+    transition: background 0.3s ease;
 }
 
-a:hover {
-    background: linear-gradient(to bottom, #db3434, #29b963); /* Gradiente al pasar el ratón */
+.nav-item a:hover {
+    background: linear-gradient(to right, #126bd8, #76d7f2);
 }
 
-/* Estilo para el primer enlace (Inicio) */
-ul li:first-child a {
-    background: #db3434; /* Color de fondo distinto para el primer enlace */
-    pointer-events: none; /* Deshabilitar eventos del ratón para el primer enlace */
-    cursor: default; /* Cambiar el cursor para indicar que no es un enlace activo */
+.special a {
+    background: #ff0000;
+    color: white;
 }
 
+.special a:hover {
+    background: #ff0000;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+
+
+/* div principal */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 200px;
+    /*background-color: #f0f0f0;*/
+}
+
+main {
+    flex: 3;
+    margin: 10px;
+}
+
+/* article */
+article {
+    background-color: rgb(0, 125, 249);
+    text-align: justify;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    flex: 3;
+    margin: 0 20px;
+    overflow-y: auto;
+    height: auto;
+    margin: 30px;
+}
+.dictionary-list {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7cf2d;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(8, 206, 18, 0.15);
+}
+
+.dictionary-list dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.dictionary-list dd {
+    margin-left: 20px;
+}
+
+/* aside */
+
+aside {
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    margin: 10px;
+    text-align: center;
+    flex: 1;
+    height: auto;
+}
+.aside-menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.aside-menu li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.aside-menu li a:hover {
+    background: #0072ff;
+}
+.aside-image {
+    width: 80%;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+}
+
+.aside-image:hover {
+    transform: scale(1.1);
+}
+
+/* footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.footer-menu li a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    transition: text-decoration 0.3s ease;
+}
+
+.footer-menu li a:hover {
+    text-decoration: underline;
+}
