@@ -1,16 +1,14 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     margin: 0;
     padding: 0;
-    /* imagen sacada de https://www.magicpattern.design/tools/css-backgrounds*/
-    background-image: url(images/css-pattern-by-magicpattern.png);
-    background-size: 400px;
+    background-image: url(background.gif);
+    background-size: 200px;
     background-repeat: repeat;
     overflow-x: hidden;
 }
 
-
-/* header */
+/* Parte 1 - header */
 header {
     background: linear-gradient(to top, #000000, #7e7d7d);
     padding: 20px;
@@ -28,7 +26,7 @@ header {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* nav bar */
+/* Parte 2 - navbar*/
 .nav-menu {
     list-style-type: none;
     display: flex;
@@ -41,7 +39,7 @@ header {
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .nav-item a:hover {
@@ -59,13 +57,11 @@ header {
 }
 
 
-
-/* div principal */
+/* Parte 3 - div principal */
 .content-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 200px;
-    /*background-color: #f0f0f0;*/
 }
 
 main {
@@ -73,7 +69,8 @@ main {
     margin: 10px;
 }
 
-/* article */
+
+/* Parte 4 - article */
 article {
     background-color: rgb(0, 125, 249);
     text-align: justify;
@@ -104,10 +101,10 @@ article {
     margin-left: 20px;
 }
 
-/* aside */
+/* Parte 5 - aside */
 
 aside {
-    background-color: #333;
+    background-color: #c41414;
     color: white;
     border-radius: 10px;
     padding: 20px;
@@ -134,16 +131,38 @@ aside {
     background: #0072ff;
 }
 .aside-image {
+    opacity: 1;
     width: 80%;
-    transition: transform 0.3s ease;
+    transition:  0.5s ease;
     border-radius: 5px;
+    backface-visibility: hidden;
 }
 
-.aside-image:hover {
-    transform: scale(1.1);
+.container {
+    position: relative;
+    width: 100%;
+  }
+  
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
 }
 
-/* footer */
+.container:hover .aside-image {
+opacity: 0.3;
+}
+
+.container:hover .middle {
+opacity: 1;
+}
+
+/* Parte 6 - footer */
 footer {
     position: relative;
     bottom: 0;
