@@ -1,86 +1,54 @@
-import { nombresTiposProductos, productosPorTipo } from './Tienda.js';
+import { nombresTiposProductos, productosPorTipo } from "./Tienda.js";
+import { MacBook } from "./MacBook.js";	
+import { Chromebook } from "./Chromebook.js";
+import { WindowsLaptop } from "./WindowsLaptop.js";
 
-
-productosPorTipo.forEach((productos, index) => { // por cada tipo de producto
-    console.log(nombresTiposProductos[index]);
-    productos.forEach(producto => { // por cada producto
-        let tipo = producto.constructor.getTipoProducto();
-        let seccion;
-        if (tipo === "Chromebooks") {
-            seccion = document.getElementById('Chromebooks');
-            let card = document.createElement('div');
-            card.className = 'product-card';
-            var marca = producto.marca;
-            var modelo = producto.modelo;
-            var precio = producto.precio;
-            var memoria = producto.mostrar();
-            let h2 = document.createElement('h2');
-            h2.innerHTML = modelo;
-            card.appendChild(h2);
-            let h4 = document.createElement('h4');
-            h4.innerHTML = marca;
-            card.appendChild(h4);
-            let p = document.createElement('p');
-            let span = document.createElement('span');
-            span.innerHTML = "Precio: " +precio + "€";
-            p.appendChild(span);
-            card.appendChild(p);
-            let p2 = document.createElement('p');
-            let span2 = document.createElement('span');
-            span2.innerHTML = "Memoria: " + memoria;
-            p2.appendChild(span2);
-            card.appendChild(p2);
-            seccion.appendChild(card);
-        } else if (tipo === "MacBooks") {
-            seccion = document.getElementById('MacBooks');
-            let card = document.createElement('div');
-            card.className = 'product-card';
-            var marca = producto.marca;
-            var modelo = producto.modelo;
-            var precio = producto.precio;
-            var cpu = producto.mostrar();
-            let h2 = document.createElement('h2');
-            h2.innerHTML = modelo;
-            card.appendChild(h2);
-            let h4 = document.createElement('h4');
-            h4.innerHTML = marca;
-            card.appendChild(h4);
-            let p = document.createElement('p');
-            let span = document.createElement('span');
-            span.innerHTML = "Precio: " +precio + "€";
-            p.appendChild(span);
-            card.appendChild(p);
-            let p2 = document.createElement('p');
-            let span2 = document.createElement('span');
-            span2.innerHTML = "CPU: " + cpu;
-            p2.appendChild(span2);
-            card.appendChild(p2);
-            seccion.appendChild(card);
-        } else if (tipo === "OrdenadoresWindows") {
-            seccion = document.getElementById('OrdenadoresWindows');
-            let card = document.createElement('div');
-            card.className = 'product-card';
-            var marca = producto.marca;
-            var modelo = producto.modelo;
-            var precio = producto.precio;
-            var conectividad = producto.mostrar();
-            let h2 = document.createElement('h2');
-            h2.innerHTML = modelo;
-            card.appendChild(h2);
-            let h4 = document.createElement('h4');
-            h4.innerHTML = marca;
-            card.appendChild(h4);
-            let p = document.createElement('p');
-            let span = document.createElement('span');
-            span.innerHTML = "Precio: " +precio + "€";
-            p.appendChild(span);
-            card.appendChild(p);
-            let p2 = document.createElement('p');
-            let span2 = document.createElement('span');
-            span2.innerHTML = "Conectividad: " + conectividad;
-            p2.appendChild(span2);
-            card.appendChild(p2);
-            seccion.appendChild(card);
+window.onload = () => {
+    function mostrarProductos(producto) {
+        var template = `
+            <div class="product-card" margin: 10px;">
+                <div style="font-size: 20px; font-weight: bold;">${producto.marca}</div>
+                <p><span style="font-weight: bold;">Modelo:</span> ${producto.modelo}</p>
+                <p><span style="font-weight: bold;">Precio:</span> ${producto.precio}€</p>
+        `;
+        if (producto instanceof MacBook) {
+            template += `
+                <p><span style="font-weight: bold;">Procesador:</span> ${producto.procesador}</p>
+            `;
         }
-    });
-});
+
+        if (producto instanceof Chromebook) {
+            template += `
+                <p><span style="font-weight: bold;">Almacenamiento:</span> ${producto.tipoDeAlmacenamiento}</p>
+            `;
+        }
+       
+        if (producto instanceof WindowsLaptop) {
+            template += `
+                <p><span style="font-weight: bold;">Capacidad:</span> ${producto.capacidad}</p>
+            `;
+        }
+
+        template += `</div>`;
+
+        return template;
+    }
+
+    var macbooks = document.getElementById("MacBooks");
+    macbooks.innerHTML = `<h2 style="">${nombresTiposProductos[0]}</h2>`;
+    for (let i = 0; i < productosPorTipo[0].length; i++) {
+        macbooks.innerHTML += mostrarProductos(productosPorTipo[0][i]);
+    }
+
+    var chromebooks = document.getElementById("Chromebooks");
+    chromebooks.innerHTML = `<h2>${nombresTiposProductos[1]}</h2>`;
+    for (let i = 0; i < productosPorTipo[1].length; i++) {
+        chromebooks.innerHTML += mostrarProductos(productosPorTipo[1][i]);
+    }
+
+    var ordenadoreswindows = document.getElementById("OrdenadoresWindows");
+    ordenadoreswindows.innerHTML = `<h2>${nombresTiposProductos[2]}</h2>`;
+    for (let i = 0; i < productosPorTipo[2].length; i++) {
+        ordenadoreswindows.innerHTML += mostrarProductos(productosPorTipo[2][i]);
+    }
+}

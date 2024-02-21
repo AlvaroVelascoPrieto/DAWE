@@ -11,17 +11,17 @@ const mac5 = new MacBook("Apple", "MacBook Air 512GB", 1200, "AppleSilicon M2");
 const mac6 = new MacBook("Apple", "MacBook Air 256GB", 1000, "AppleSilicon M2");
 
 
-const chrome1 = new Chromebook("Asus", "Chromebook Plus CX34", 499, "Intel Core I3");
-const chrome2 = new Chromebook("Acer", "Chromebook 16 GE", 1099, "Intel Core I7");
-const chrome3 = new Chromebook("Asus", "Chromebook Flip C433", 549, "Intel Core M3-8100Y");
-const chrome4 = new Chromebook("Lenovo", "IdeaPad hromebook 3I 15", 449, "Intel Celeron");
-const chrome5 = new Chromebook("Asus", "Chromebook Vibe CX55 Flip", 699, "Intel Core I3");
-const chrome6 = new Chromebook("Lenovo", "Lenovo Chromebook Duet 5", 499, "Qualcomm Snapdragon 7C");
+const chrome1 = new Chromebook("Asus", "Chromebook Plus CX34", 499, "EMMc");
+const chrome2 = new Chromebook("Acer", "Chromebook 16 GE", 1099, "M.2");
+const chrome3 = new Chromebook("Asus", "Chromebook Flip C433", 549, "SSD");
+const chrome4 = new Chromebook("Lenovo", "IdeaPad hromebook 3I 15", 449, "HDD");
+const chrome5 = new Chromebook("Asus", "Chromebook Vibe CX55 Flip", 699, "SSD");
+const chrome6 = new Chromebook("Lenovo", "Lenovo Chromebook Duet 5", 499, "HDD");
 
-const laptop1 = new WindowsLaptop("Microsoft", "Surface Laptop 3", 1500, "Intel Core i7 - 1165G7");
-const laptop2 = new WindowsLaptop("Dell", "XP· 13 Plus", 1300, "Intel Core I7 1370U");
-const laptop3 = new WindowsLaptop("LG", "Gram", 1200, "Intel Core I7 1350U");
-const laptop4 = new WindowsLaptop("Huawei", "Matebook D14", 950, "Ryzen 7 4600U");
+const laptop1 = new WindowsLaptop("Microsoft", "Surface Laptop 3", 1500, "2TB");
+const laptop2 = new WindowsLaptop("Dell", "XP· 13 Plus", 1300, "1.5TB");
+const laptop3 = new WindowsLaptop("LG", "Gram", 1200, "I1TB");
+const laptop4 = new WindowsLaptop("Huawei", "Matebook D14", 950, "1TB");
 
 // Crear la lista con cada tipo de producto
 const nombresTiposProductos = [
