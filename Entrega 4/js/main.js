@@ -28,7 +28,11 @@ window.onload = () => {
                 <p><span style="font-weight: bold;">Capacidad:</span> ${producto.capacidad}</p>
             `;
         }
-
+        
+        template += `
+                    <button class="comprar-btn" disabled>Comprar</button>
+                    <input type="number" min="0" max="9" value="0" class="cantidad-spinner">
+            `;
         template += `</div>`;
 
         return template;
@@ -51,4 +55,34 @@ window.onload = () => {
     for (let i = 0; i < productosPorTipo[2].length; i++) {
         ordenadoreswindows.innerHTML += mostrarProductos(productosPorTipo[2][i]);
     }
+
+    // Agregar evento change al selector de cantidad para habilitar/deshabilitar el botón de compra y actualizar su texto
+    var cantidadSpinners = document.querySelectorAll('.cantidad-spinner');
+    cantidadSpinners.forEach(spinner => {
+        spinner.addEventListener('change', () => {
+            var productCard = spinner.parentElement;
+            var comprarButton = productCard.querySelector('.comprar-btn');
+            var cantidadSeleccionada = parseInt(spinner.value);
+            if (cantidadSeleccionada > 0 && cantidadSeleccionada <= 9) {
+                comprarButton.disabled = false;
+                comprarButton.textContent = `Comprar (${cantidadSeleccionada})`;
+            } else {
+                comprarButton.disabled = true;
+                comprarButton.textContent = `Comprar`;
+            }
+        });
+    });
+
+    // Agregar evento de clic al botón "Comprar" para agregar productos al carrito
+    var comprarButtons = document.querySelectorAll('.comprar-btn');
+    comprarButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            var productCard = button.parentElement;
+            var productName = productCard.querySelector('div').textContent;
+            var quantity = parseInt(productCard.querySelector('.cantidad-spinner').value);
+            // Aquí puedes implementar la lógica para agregar el producto al carrito con la cantidad seleccionada
+            // Por ahora, solo mostraremos un mensaje en la consola
+            console.log(`Producto: ${productName}, Cantidad: ${quantity}`);
+        });
+    });
 }
