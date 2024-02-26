@@ -73,16 +73,24 @@ window.onload = () => {
         });
     });
 
+    var carrito = [];
+
     // Agregar evento de clic al botón "Comprar" para agregar productos al carrito
     var comprarButtons = document.querySelectorAll('.comprar-btn');
     comprarButtons.forEach(button => {
         button.addEventListener('click', () => {
             var productCard = button.parentElement;
-            var productName = productCard.querySelector('div').textContent;
+            var productBrand = productCard.querySelector('div').textContent;
+            var productName = productCard.querySelector('p').textContent.split(':')[1].trim();
             var quantity = parseInt(productCard.querySelector('.cantidad-spinner').value);
-            // Aquí puedes implementar la lógica para agregar el producto al carrito con la cantidad seleccionada
-            // Por ahora, solo mostraremos un mensaje en la consola
-            console.log(`Producto: ${productName}, Cantidad: ${quantity}`);
+
+            var carrito = document.getElementById('Carrito');
+            carrito.innerHTML = `<h2>Carrito</h2>`;
+            carrito.style.display = 'block';
+
+            var productoEnCarrito = document.createElement('p');
+            productoEnCarrito.textContent = `${productBrand} ${productName}, Cantidad: ${quantity}`;
+            carrito.appendChild(productoEnCarrito);
         });
     });
 }
