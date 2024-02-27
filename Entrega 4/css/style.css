@@ -89,8 +89,25 @@ section h1 {
 .Tienda{
     display: flex;
     width: 100%;
-    
 }
 
+.Carrito{
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 80vh;
+}
+
+
+.productoEnCarrito{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.productoEnCarrito:hover {
+    background-color: #038146;
+}
 
 
