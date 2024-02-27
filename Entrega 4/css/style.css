@@ -85,3 +85,12 @@ section h1 {
 .product-card span {
     font-weight: bold;
 }
+
+.Tienda{
+    display: flex;
+    width: 100%;
+    
+}
+
+
+

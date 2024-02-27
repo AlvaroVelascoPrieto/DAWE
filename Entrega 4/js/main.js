@@ -88,9 +88,19 @@ window.onload = () => {
             carrito.innerHTML = `<h2>Carrito</h2>`;
             carrito.style.display = 'block';
 
+            var carro = document.getElementById('Carro');
+            carro.style.width = '20%';
+            carrito.style.position = 'fixed';
+            
+
+            var tienda = document.getElementById('Tienda');
+            tienda.style.width = '80%';
+
             var productoEnCarrito = document.createElement('p');
             productoEnCarrito.textContent = `${productBrand} ${productName}, Cantidad: ${quantity}`;
             carrito.appendChild(productoEnCarrito);
+
+            
         });
     });
 }
