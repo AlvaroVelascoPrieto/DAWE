@@ -96,6 +96,7 @@ section h1 {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 80vh;
+    transition: 300ms ease;
 }
 
 

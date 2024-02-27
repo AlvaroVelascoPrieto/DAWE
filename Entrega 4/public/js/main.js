@@ -82,6 +82,9 @@ window.onload = () => {
         // Limpias el contenedor del carrito
         contenedorCarrito.innerHTML = '';
 
+        contenedorCarrito.innerHTML = `
+            <h2>Carrito</h2>
+        `;
         // Iteras sobre las entradas del mapa del carrito
         for (let [nombreProducto, cantidad] of carritoLista.entries()) {
             // Creas el HTML para el producto
@@ -139,4 +142,18 @@ window.onload = () => {
             
         });
     });
+    function cargarGestoresEventos() {
+        const carrito = document.getElementById('Carro'); 
+
+        carrito.addEventListener('mouseenter', function() {
+            this.style.width = '40%';
+        });
+
+        carrito.addEventListener('mouseleave', function() {
+            this.style.width = '20%';
+        });
+
+    }
+
+    window.onload = cargarGestoresEventos();
 }
