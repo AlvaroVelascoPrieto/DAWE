@@ -6,22 +6,17 @@ body {
   }
   
   .container {
-    max-width: 600px;
-    margin: 20px auto;
+    width: 100%;
+    height: 100%;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+    margin-bottom: 20px; /* Agregamos margen inferior */
   }
   
   select {
-    width: 100%;
+    width: calc(100% - 20px); /* Ajustamos el ancho del combobox */
     padding: 10px;
     font-size: 16px;
     margin-bottom: 20px;
@@ -29,6 +24,14 @@ body {
     border: 1px solid #ccc;
   }
   
+  
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+ 
   button {
     padding: 10px 20px;
     font-size: 16px;
