@@ -25,7 +25,7 @@
     const viewportCtx = viewportCanvas.getContext('2d');
 
     const spriteSheet = new Image();
-    spriteSheet.src = 'spritesheet.png'; // Ruta de tu spritesheet
+    spriteSheet.src = 'images/spritesheet.png'; // Ruta de tu spritesheet
 
     const spriteSize = 32; // Tamaño de cada sprite en el spritesheet
     const viewportSize = 128; // Tamaño de la ventana deslizante
@@ -45,14 +45,23 @@
         // Mostrar la posición de la ventana
         spritesheetCtx.fillStyle = 'black';
         spritesheetCtx.font = '12px Arial';
-        spritesheetCtx.fillText(`Ventana: (${viewportX},${viewportY})`, 10, 20);
+        const text = `Ventana: (${viewportX},${viewportY})`;
+        const textWidth = spritesheetCtx.measureText(text).width;
+        spritesheetCtx.fillText(text, spritesheetCanvas.width - textWidth - 10, 20);
     }
 
     function updateViewport() {
         viewportCtx.clearRect(0, 0, viewportCanvas.width, viewportCanvas.height);
-        // Obtener el contenido dentro de la ventana en el spritesheet y mostrarlo en el canvas de la ventana
+        // Obtener el contenido dentro de la ventana en el spritesheet
         const imageData = spritesheetCtx.getImageData(viewportX, viewportY, viewportSize, viewportSize);
-        viewportCtx.putImageData(imageData, 0, 0);
+        // Crear un nuevo canvas temporal para dibujar la imagen
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = viewportSize;
+        tempCanvas.height = viewportSize;
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCtx.putImageData(imageData, 0, 0);
+        // Dibujar la imagen del canvas temporal en el canvas de la ventana, escalándola al tamaño del canvas de la ventana
+        viewportCtx.drawImage(tempCanvas, 0, 0, viewportSize, viewportSize, 0, 0, viewportCanvas.width, viewportCanvas.height);
     }
 
     document.addEventListener('keydown', function(event) {
