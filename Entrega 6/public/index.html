@@ -4,85 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visualizador de Spritesheet</title>
-<style>
-    #canvasContainer {
-        position: relative;
-    }
-    #spritesheetCanvas, #viewportCanvas {
-        border: 1px solid black;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
 <div id="canvasContainer">
     <canvas id="spritesheetCanvas" width="512" height="512"></canvas>
     <canvas id="viewportCanvas" width="128" height="128"></canvas>
 </div>
-<script>
-    const spritesheetCanvas = document.getElementById('spritesheetCanvas');
-    const spritesheetCtx = spritesheetCanvas.getContext('2d');
-    const viewportCanvas = document.getElementById('viewportCanvas');
-    const viewportCtx = viewportCanvas.getContext('2d');
-
-    const spriteSheet = new Image();
-    spriteSheet.src = 'images/spritesheet.png'; // Ruta de tu spritesheet
-
-    const spriteSize = 32; // Tamaño de cada sprite en el spritesheet
-    const viewportSize = 128; // Tamaño de la ventana deslizante
-    let viewportX = 0; // Posición X inicial de la ventana
-    let viewportY = 0; // Posición Y inicial de la ventana
-
-    spriteSheet.onload = function() {
-        drawSpritesheet();
-        updateViewport();
-    }
-
-    function drawSpritesheet() {
-        spritesheetCtx.drawImage(spriteSheet, 0, 0, spritesheetCanvas.width, spritesheetCanvas.height);
-        // Dibujar la ventana en el spritesheet
-        spritesheetCtx.strokeStyle = 'red';
-        spritesheetCtx.strokeRect(viewportX, viewportY, viewportSize, viewportSize);
-        // Mostrar la posición de la ventana
-        spritesheetCtx.fillStyle = 'black';
-        spritesheetCtx.font = '12px Arial';
-        const text = `Ventana: (${viewportX},${viewportY})`;
-        const textWidth = spritesheetCtx.measureText(text).width;
-        spritesheetCtx.fillText(text, spritesheetCanvas.width - textWidth - 10, 20);
-    }
-
-    function updateViewport() {
-        viewportCtx.clearRect(0, 0, viewportCanvas.width, viewportCanvas.height);
-        // Obtener el contenido dentro de la ventana en el spritesheet
-        const imageData = spritesheetCtx.getImageData(viewportX, viewportY, viewportSize, viewportSize);
-        // Crear un nuevo canvas temporal para dibujar la imagen
-        const tempCanvas = document.createElement('canvas');
-        tempCanvas.width = viewportSize;
-        tempCanvas.height = viewportSize;
-        const tempCtx = tempCanvas.getContext('2d');
-        tempCtx.putImageData(imageData, 0, 0);
-        // Dibujar la imagen del canvas temporal en el canvas de la ventana, escalándola al tamaño del canvas de la ventana
-        viewportCtx.drawImage(tempCanvas, 0, 0, viewportSize, viewportSize, 0, 0, viewportCanvas.width, viewportCanvas.height);
-    }
-
-    document.addEventListener('keydown', function(event) {
-        switch(event.key) {
-            case 'ArrowLeft':
-                viewportX = Math.max(0, viewportX - 5);
-                break;
-            case 'ArrowRight':
-                viewportX = Math.min(spritesheetCanvas.width - viewportSize, viewportX + 5);
-                break;
-            case 'ArrowUp':
-                viewportY = Math.max(0, viewportY - 5);
-                break;
-            case 'ArrowDown':
-                viewportY = Math.min(spritesheetCanvas.height - viewportSize, viewportY + 5);
-                break;
-        }
-
-        updateViewport();
-        drawSpritesheet();
-    });
-</script>
+<script src="./js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+#canvasContainer {
+    position: relative;
+}
+#spritesheetCanvas, #viewportCanvas {
+    border: 1px solid black;
+}
