@@ -15,6 +15,10 @@ window.onload = function() {
 	botonScifi.onclick = cambiarEfecto;
 	var botonRotar = document.getElementById("rotar");
 	botonRotar.onclick = toggleRotar;
+	var botonPlayAudio = document.getElementById("tocarAudio");
+	botonPlayAudio.onclick = function() {
+		loadAudio("audio/soundtrack.mp3").then(audio => audio.play());
+	};
 	
 	
 				
@@ -120,4 +124,13 @@ function scifi(pos, r, g, b, data) {
 
 function toggleRotar() {
 	rotando = !rotando;
+}
+
+function loadAudio(url) {
+    return new Promise((resolve, reject) => {
+        var audio = new Audio();
+        audio.onloadeddata = () => resolve(audio);
+        audio.onerror = reject;
+        audio.src = url;
+    });
 }
