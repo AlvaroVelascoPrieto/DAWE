@@ -19,7 +19,8 @@ window.onload = function() {
 	botonPlayAudio.onclick = function() {
 		loadAudio("audio/soundtrack.mp3").then(audio => audio.play());
 	};
-	
+	var botonPip = document.getElementById("pip");
+	botonPip.onclick = pip;	
 	
 				
 	video.addEventListener("play", procesarFrame, false);
@@ -134,3 +135,10 @@ function loadAudio(url) {
         audio.src = url;
     });
 }
+
+function pip() {
+    var video = document.getElementById("video");
+    video.requestPictureInPicture().catch(error => {
+        console.error(`Failed to start Picture-in-Picture mode: ${error}`);
+    });
+};
