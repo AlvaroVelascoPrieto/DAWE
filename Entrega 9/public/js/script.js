@@ -87,8 +87,38 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         } else {
             // Si no hay errores, enviar el formulario
-            formulario.submit();
-            console.log("Formulario enviado")
-        }
+            const formData = new FormData();
+
+            for (const file of fileInput.files) {
+                formData.append("file", file);
+            }
+            
+            fetch("/upload/files", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(data.file);
+    
+                    const img = document.createElement('img');
+
+                    img.src = `/imgs/${data.file.name}`;
+
+                    img.alt = data.file.name;
+                    img.width = 200; // establecer el ancho que desees
+
+                    img.addEventListener('click', () => {
+                    window.open(img.src);
+                });
+
+                    document.getElementById('estado').appendChild(img);
+                } else {
+                    console.log('Error al subir el archivo');
+                }
+                })
+                .catch(error => console.error('Error:', error));
+            }
     });
 });
