@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form id="formulario">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre" autofocus>
+        </div>
+        <div>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" placeholder="Ingrese su teléfono">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Ingrese su email">
+        </div>
+        <div>
+            <label for="libros">Libros:</label>
+            <input type="text" id="libros" placeholder="Haga clic para ver sugerencias">
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" min="1" max="5" step="1" value="1">
+        </div>
+        <div>
+            <label for="file">File Upload:</label>
+            <input type="file" id="file" multiple>
+            <div id="dropArea">Arrastre y suelte los archivos aquí</div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="estado">
+        <h2>Mensajes de estado</h2>
+        <ul id="estadoLista"></ul>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

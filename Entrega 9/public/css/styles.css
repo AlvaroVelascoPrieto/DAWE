@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="file"] {
+    width: calc(100% - 170px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    width: calc(100% - 170px);
+    padding: 12px;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#dropArea {
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+#estado {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#estadoLista {
+    list-style-type: none;
+    padding: 0;
+}
+
+#estadoLista li {
+    margin-bottom: 5px;
+}
