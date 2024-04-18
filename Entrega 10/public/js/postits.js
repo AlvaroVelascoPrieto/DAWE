@@ -27,9 +27,10 @@ function init() {
 	});
 
 	var totalKB = calculateStorageSize();
+    var div = document.getElementById("tamano")
     var tamano = document.createElement("div");
     tamano.innerHTML = "Espacio total utilizado: " + totalKB.toFixed(2) + " KB";
-    document.body.appendChild(tamano);
+    div.appendChild(tamano);
 
 	var stickies = document.getElementById("stickies");
     stickies.addEventListener("mouseover", function(event) {
