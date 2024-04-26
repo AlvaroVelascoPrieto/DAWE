@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var admin = require("firebase-admin");
 var MongoDBStore = require('connect-mongodb-session')(session);
+var path = require('path');
 
 function checkAuth(req, res, next) {
   if (!req.session.userId) {
@@ -57,7 +58,7 @@ app.post('/getToken', (req, res) => {
 });
 
 app.get('/users', checkAuth, (req, res) => {
-  res.send('<p>some html</p>');
+  res.sendFile(path.join(__dirname, 'public', 'users.html'));
 });
 
 app.get('/logout', function(req, res){
