@@ -109,6 +109,17 @@ section h1 {
 
 .productoEnCarrito:hover {
     background-color: #038146;
+    
 }
 
+.om{
+    color: red;
+    width: 20%;
+    background-color: #8f8f8f;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    height: fit-content;
+}
 

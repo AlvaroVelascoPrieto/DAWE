@@ -1,33 +1,58 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8"> 
-		<title>Tienda de Ordenadores</title>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="module" src="js/main.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<h1>Tienda de Ordenadores | Alvaro Velasco Prieto y Alberto Arostegui Garcia</h1>
-			</header>
-			<main>
-				<div id="Tienda" class="Tienda">
-					<section id="Chromebooks">
-					</section>
-					<section id="MacBooks">
-					</section>
-					<section id="OrdenadoresWindows">
-					</section>
-				</div>
-				<div id="Carro" class="Carro">
-					<section id="Carrito" class="Carrito" style="display: none">
-						<h2>Carrito</h2>
-					</section>
-				</div>
-				
-			</main>
-		</div>
-	</body>
+<head>
+    <meta charset="utf-8"> 
+    <title>Tienda de Ordenadores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tienda de Ordenadores | Alvaro Velasco Prieto y Alberto Arostegui Garcia</h1>
+        </header>
+        <!-- Mensaje de offline -->
+        <main>
+			<div id="offlineMessage" class="offlineMessage" style="display: none; "></div>
+            <div id="Tienda" class="Tienda">
+                <section id="Chromebooks">
+                </section>
+                <section id="MacBooks">
+                </section>
+                <section id="OrdenadoresWindows">
+                </section>
+            </div>
+            <div id="Carro" class="Carro">
+                <section id="Carrito" class="Carrito" style="display: none">
+                    <h2>Carrito</h2>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Funcion para mostrar mensaje de online en función de el estado online/offline
+        function updateOnlineStatus(event) {
+            var offlineMessage = document.getElementById('offlineMessage');
+			offlineMessage.innerHTML = "<div class='productoEnCarrito'>Estas offline.</div>"
+            if (navigator.onLine) {
+                offlineMessage.style.display = 'none';
+            } else {
+                offlineMessage.style.display = 'block';
+            }
+        }
+
+        updateOnlineStatus();
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        // Registrar el service worker para poner la web en caché
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('js/sw.js');
+            });
+        }
+    </script>
+</body>
 </html>
